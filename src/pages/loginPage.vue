@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <div>
 
     <div  class="box">
@@ -26,39 +26,39 @@
 
 </template>
 <script>
-  export default {
-    data(){
-      return{
-        username:'',
-        password:'',
-      }
-    },
-    methods:{
-      userLogin:function () {
-      this.$http.post('http://localhost:3000/users/login',{username: this.username,password:this.password}).then((data) => {
-        if(data.body.status==1){
+export default {
+  data () {
+    return {
+      username: '',
+      password: ''
+    }
+  },
+  methods: {
+    userLogin: function () {
+      this.$http.post('http://localhost:3000/users/login', {username: this.username, password: this.password}).then((data) => {
+        if (data.body.status === 1) {
           alert(data.body.message)
-        }else{
-//          console.log(data.body.data.user[0])
-          localStorage.setItem('token',data.body.data.token);
-          localStorage.setItem('username',data.body.data.user[0].username);
-          localStorage.setItem('_id',data.body.data.user[0]._id);
-//          localStorage.setItem('username',this.username);
+        } else {
+          //          console.log(data.body.data.user[0])
+          localStorage.setItem('token', data.body.data.token)
+          localStorage.setItem('username', data.body.data.user[0].username)
+          localStorage.setItem('_id', data.body.data.user[0]._id)
+          //          localStorage.setItem('username',this.username);
           this.$router.go(-1)
         }
       })
     },
-//      注册跳转页面
-      userRegister:function () {
-        this.$router.push({path:'register'})
-      },
-//      找回密码
-      findBackPassword:function () {
-        this.$router.push({path:'findPassword'})
-      }
+    //      注册跳转页面
+    userRegister: function () {
+      this.$router.push({path: 'register'})
+    },
+    //      找回密码
+    findBackPassword: function () {
+      this.$router.push({path: 'findPassword'})
+    }
   }
 
-  }
+}
 </script>
 <style>
   .box{

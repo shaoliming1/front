@@ -3,12 +3,14 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import iview from  'iview'
-import 'iview/dist/styles/iview.css';
+import iview from 'iview'
+import 'iview/dist/styles/iview.css'
 
 Vue.config.productionTip = false
-
-
+Vue.use(iview)
+router.beforeEach((to, from, next) => {
+  if (!localStorage.getItem('id') && to.fullPath !== '/login') { next('login') } else { next() }
+})
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
