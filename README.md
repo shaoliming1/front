@@ -1,6 +1,6 @@
-# project
+# cms front project
 
-> A Vue.js project
+> A Vue.js project, which is our cms's front project
 
 ## Build Setup
 
